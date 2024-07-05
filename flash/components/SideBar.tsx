@@ -8,10 +8,15 @@ import React from "react";
 
 const SideBar = () => {
   const pathName = usePathname();
+  const isLOggedIn = {
+    name:"Billy Tata Ngwa",
+    email:"billytatangwa5@gmail.com",
+    imageUrl:"ypui"
+  }
   return (
-    <section className="sidebar">
+    <section className="sidebar shadow-2xl">
       <nav className="flex flex-col gap-6">
-        <Link href="/" className="mb-12 cursor-pointer items-center gap-2">
+        <Link href="/" className="mb-12 cursor-pointer flex items-center gap-3">
           <Image src={"/icons/logo.svg"} alt="Flash" width={34} height={34} />
           <h1 className="sidebar-logo">Flash</h1>
         </Link>
@@ -36,6 +41,7 @@ const SideBar = () => {
           );
         })}
       </nav>
+      <h1 className="text-bankGradient">{isLOggedIn.name  }</h1>
     </section>
   );
 };

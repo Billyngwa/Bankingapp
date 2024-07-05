@@ -15,7 +15,7 @@ const DoughnutChart = ({accounts}:DoughnutChartProps) => {
             backgroundColor:["#0747b6","#6172F3","#2265d8","2f91fa"]
           }
         ],
-        labels:["NFC Bank","Afriland First Bank","UBA bank","Eco bank"]
+        labels:["NFC Bank=","Afriland First Bank","UBA bank","Eco bank"]
       } 
   return (
     <Doughnut data={data }

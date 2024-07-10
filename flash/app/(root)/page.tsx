@@ -14,7 +14,7 @@ const Home = () => {
   }
   return (
     <section className='flex justify-between'>
-      <div>
+      <div className='w-[50vw] ml-[2%] mr-3'>
         <header>
 
         <HeaderBox
@@ -32,7 +32,7 @@ const Home = () => {
         </header>
       </div>
 
-      <RightSideBar user={isLoggedIn} transactions={[]} banks={[]}/>
+      <RightSideBar user={isLoggedIn} transactions={[]} banks={[{username:"Bob Loco"},{},{}]}/>
     </section>
   )
 }

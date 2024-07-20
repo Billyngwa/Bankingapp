@@ -47,7 +47,7 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
         } */}
         {banks.length > 0 && (
           <div className="banks relative ">
-            <div className="absolute top-[5px] left-[5%] z-30 bg-red-100">
+            <div className="absolute top-[5px] left-[-5%] z-30">
               {banks[0] && (
                 <BankCard
                   key={banks[0].$id}
@@ -59,7 +59,7 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
             </div>
 
             {banks[1] && (
-              <div className="absolute top-[30px] left-[15%] z-20 bg-pink-300">
+              <div className="absolute top-[40px] left-[15%] z-20">
                 {banks[1] && (
                   <BankCard
                     key={banks[1].$id}
@@ -71,7 +71,7 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
               </div>
             )}
              {banks[2] && (
-              <div className="absolute top-[55px] left-[25%] z-10 bg-pink-300">
+              <div className="absolute top-[90px] left-[5%] z-10">
                 {banks[2] && (
                   <BankCard
                     key={banks[2].$id}

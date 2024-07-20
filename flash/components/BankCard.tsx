@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -22,11 +23,36 @@ const BankCard = ({
 
             </div>
             <p className="text-14 font-semibold tracking-[1.1px] text-white">
-                **** **** ****
+            &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 
+                <span>{account.mask} 1234</span>
             </p>
           </article>
         </div>
+        <div className="bank-card_icon">
+          <Image
+            src="/icons/Paypass.svg"
+            width={20}
+            height={20}
+            alt="pay"
+          />
+             <Image
+            src="/icons/mastercard.svg"
+            width={45}
+            height={32}
+            alt="mastercard"
+            className="ml-9"
+          />
+             <Image
+            src="/icons/lines.png"
+            width={316}
+            height={190}
+            alt="lines"
+            className="absolute top-0 left-0"
+            
+          />
+        </div>
       </Link>
+      {/* adding code to copy card number */}
     </div>
   );
 };

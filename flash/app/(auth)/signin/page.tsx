@@ -1,4 +1,5 @@
 import AuthForm from "@/components/AuthForm";
+import AuthFormWithZod from "@/components/AuthFormWithZod";
 import Logo from "@/components/logo";
 import Image from "next/image";
 import React from "react";
@@ -10,7 +11,7 @@ const Signin = () => {
         <Logo />
         <h1 className="text-xl mt-6 font-semibold mb-2">Login</h1>
         <p className="text mb-2">Welcome back! Please enter your details</p>
-        <AuthForm type="sign-in" />
+        <AuthFormWithZod/>
       </div>
       <div className="right w-[50%]">
         <Image

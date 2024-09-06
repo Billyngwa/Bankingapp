@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Logo from "./logo";
-
+// import logo from "../components/"
 const SideBar = () => {
   const pathName = usePathname();
   const isLOggedIn = {
@@ -18,7 +17,7 @@ const SideBar = () => {
     <section className="sidebar shadow-2xl">
       <nav className="flex flex-col gap-6">
         <Link href="/" className="mb-12 cursor-pointer flex items-center gap-3">
-          <Logo />
+          {/* <Logo /> */}
         </Link>
         {sidebarLinks.map((link) => {
           const isActive =

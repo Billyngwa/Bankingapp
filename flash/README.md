@@ -34,3 +34,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+so if I understand you BankFormData is a type that was infered from a yup schema
+
+so something like this:
+where bankSchema is the schema declared
+const bankSchema = yup.object({
+    accountNumber: yup.string().required(),
+    accountName: yup.string().required(),
+    bankName: yup.string().required(),
+    branchName: yup.string().required(),
+    ifscCode: yup.string().optional(),
+    
+})
+
+Now some where along the line, BankFormData was created as such which is a type:
+type BankFormData =  yup.infer<typeOf bankSchema>
+
+then  harnessing it with react hook form we now have something like this: 
+const methods = useForm<BankFormData>({
+    resolver: yupResolver(pay_bank),
+  });
+
+  now saying that useform accepts only data which is of type BankFormData
+
+  I can literally type out BankFormData as such:
+  interface BankFormData{
+    accountNumber:string,
+    accountName:string,
+    bankName:string,
+    branchName:string,
+    ifscCode?:string
+  }

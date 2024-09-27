@@ -1,4 +1,6 @@
+
 import AuthForm from "@/components/AuthForm";
+import AuthFormWithZod from "@/components/AuthFormWithZod";
 import Logo from "@/components/logo";
 import Image from "next/image";
 import React from "react";
@@ -10,16 +12,18 @@ const SignUp = () => {
       <Logo />
       <h1 className="text-xl mt-6 font-semibold mb-2">Sign up</h1>
       <p className="text mb-2">Please enter your details</p>
-      <AuthForm type="sign-up" />
+      <AuthForm type="sign-up"/>
+      {/* <AuthFormWithZod/> */}
+
     </div>
-    <div className="right w-[40%] ml-[5%]">
+    {/* <div className="right w-[40%] ml-[5%]">
       <Image
         src="icons/auth-image.svg"
         width={600}
         height={460}
         alt="aut image"
       />
-    </div>
+    </div> */}
   </section>
   );
 };

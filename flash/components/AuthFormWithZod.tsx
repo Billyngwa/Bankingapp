@@ -12,9 +12,9 @@ const formSchema =  z.object({
     password: z.string().min(4)
 
 })
-
+ type shchemaType =  z.infer<typeof formSchema>
 const AuthFormWithZod = () => {
-  const form = useForm<any>({
+  const form = useForm<shchemaType>({
     resolver:zodResolver(formSchema),
     mode:"onChange",
     defaultValues:{

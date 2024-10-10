@@ -21,6 +21,7 @@ import CustomInput from "./inputs/CustomInput";
 import { formSchema } from "@/lib/utils";
 import { Circle, LucideLoaderCircle } from "lucide-react";
 import Link from "next/link";
+import { signIn, signUp } from "@/lib/Actions/user.actions";
 
  
 
@@ -30,29 +31,49 @@ const AuthFormWithZod = ({ type }: { type: string }) => {
   const validationSchema = formSchema(type)
 
   // 1. Define your form.
-  
-
   const form = useForm<z.infer<typeof validationSchema>>({
     resolver: zodResolver(validationSchema),
-    defaultValues:{
-      firstName:"",
-      lastName:"",
-      email:"",
-      password:"",
-      cni:"",
-      address:"",
-      state:""
-    }
+    // defaultValues:{
+    //   firstName:"",
+    //   lastName:"",
+    //   email:"",
+    //   password:"",
+    //   cni:"",
+    //   address:"",
+    //   state:""
+    // }
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values:z.infer<typeof validationSchema>) {
-    // Do something with the form values.
-    // This will be type-safe and validated.
-    setIsloading((loading) => !isloading)
-    console.log(values);
-    setIsloading(false)
+   async function submitHandler(values:z.infer<typeof validationSchema>) {
+      if(type==="sign-in"){
 
+        setIsloading(true);
+        const loginInfo = {
+          email:values.email,
+          password:values.password
+        }
+        const identifiedUser = await signIn(loginInfo)
+        console.log(loginInfo);
+        
+      }
+      if(type==="sign-up"){
+        setIsloading(true);
+        const signUpInfo = {
+          email: values.email,
+          password:values.password,
+          firstName:values.firstName,
+        lastName:values.lastName,
+        address:values.address,
+        state:values.state,
+        postalCode:values.postalCode,
+        dateOfBirth:values.dateOfBirth,
+        cni:values.cni
+        }
+          const registeredUser = await signUp(signUpInfo)
+          setuser(registeredUser)
+        console.log(signUpInfo);
+      }
   }
  const isValid = form.formState.isValid
  console.log(isValid);
@@ -77,7 +98,7 @@ const AuthFormWithZod = ({ type }: { type: string }) => {
             <>
               <Form {...form}>
                 <form
-                  onSubmit={form.handleSubmit(onSubmit)}
+                  onSubmit={form.handleSubmit(submitHandler)}
                   className="space-y-8"
                 >
                   {
@@ -139,12 +160,12 @@ const AuthFormWithZod = ({ type }: { type: string }) => {
                     placeholder="Enter password "
                     control={form.control}
                   />
-                  <Button disabled={isloading===true} className="bg-blue-600 text-white text-xl" type="submit">
+                  <Button disabled={isloading===true || isValid===false} className="bg-blue-600 text-white text-xl" type="submit">
                     {isloading === true ? 
                       <span className="flex gap-4 items-center">
                         <LucideLoaderCircle className="animate-spin"/>
                         Loading...
-                      </span>  
+                      </span> 
 
                       :
                       <>

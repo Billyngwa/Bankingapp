@@ -13,11 +13,11 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
       />
       <div className="user-info ml-3">
         <span className="bg-gray-100 shadow-xl h-full w-full py-3 px-6 border-white border-4 text-center text-bankGradient text-[40px] rounded-[50%] align-middle">
-          {user.name[0]}
+          {user?.name[0]}
         </span>
         <div className="email-name pt-8">
-          <h1 className="font-bold">{user.name}</h1>
-          <h5 className="text-[15px]">{user.email}</h5>
+          <h1 className="font-bold">{user?.name}</h1>
+          <h5 className="text-[15px]">{user?.email}</h5>
         </div>
       </div>
       <section className="banks">
@@ -52,7 +52,7 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
                 <BankCard
                   key={banks[0].$id}
                   account={banks[0]}
-                  userName={user.firstName + user.lastName}
+                  userName={user?.name}
                   showBalance={false}
                 />
               )}
@@ -64,7 +64,7 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
                   <BankCard
                     key={banks[1].$id}
                     account={banks[1]}
-                    userName={user.firstName + user.lastName}
+                    userName={user?.name}
                     showBalance={false}
                   />
                 )}{" "}
@@ -76,7 +76,7 @@ const RightSideBar = ({ user, banks, transactions }: RightSidebarProps) => {
                   <BankCard
                     key={banks[2].$id}
                     account={banks[2]}
-                    userName={user.firstName + user.lastName}
+                    userName={user?.name}
                     showBalance={false}
                   />
                 )}{" "}

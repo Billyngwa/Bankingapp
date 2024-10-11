@@ -22,6 +22,8 @@ import { formSchema } from "@/lib/utils";
 import { Circle, LucideLoaderCircle } from "lucide-react";
 import Link from "next/link";
 import { signIn, signUp } from "@/lib/Actions/user.actions";
+import { useRouter } from "next/navigation";
+
 
  
 
@@ -29,7 +31,7 @@ const AuthFormWithZod = ({ type }: { type: string }) => {
   const [user, setuser] = useState<null | undefined | object>(null);
   const [isloading, setIsloading] = useState<boolean>(false);
   const validationSchema = formSchema(type)
-
+  const router = useRouter()
   // 1. Define your form.
   const form = useForm<z.infer<typeof validationSchema>>({
     resolver: zodResolver(validationSchema),
@@ -46,6 +48,7 @@ const AuthFormWithZod = ({ type }: { type: string }) => {
 
   // 2. Define a submit handler.
    async function submitHandler(values:z.infer<typeof validationSchema>) {
+    
       if(type==="sign-in"){
 
         setIsloading(true);
@@ -54,9 +57,11 @@ const AuthFormWithZod = ({ type }: { type: string }) => {
           password:values.password
         }
         const identifiedUser = await signIn(loginInfo)
-        console.log(loginInfo);
-        
+        if(identifiedUser) router.push("/")
+
       }
+
+
       if(type==="sign-up"){
         setIsloading(true);
         const signUpInfo = {

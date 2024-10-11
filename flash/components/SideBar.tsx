@@ -1,18 +1,21 @@
 "use client";
 import { sidebarLinks } from "@/constants";
+import { getLoggedInUser } from "@/lib/Actions/user.actions";
 import { cn } from "@/lib/utils";
+import { LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 // import logo from "../components/"
-const SideBar = () => {
+const SideBar = async () => {
   const pathName = usePathname();
-  const isLOggedIn = {
-    name: "Billy Tata Ngwa",
-    email: "billytatangwa5@gmail.com",
-    imageUrl: "ypui",
-  };
+  const isLOggedIn = await getLoggedInUser();
+  // const isLOggedIn = {
+  //   name: "Billy Tata Ngwa",
+  //   email: "billytatangwa5@gmail.com",
+  //   imageUrl: "ypui",
+  // };
   return (
     <section className="sidebar shadow-2xl">
       <nav className="flex flex-col gap-6">
@@ -46,7 +49,21 @@ const SideBar = () => {
           );
         })}
       </nav>
-      <h1 className="text-bankGradient">{isLOggedIn.name}</h1>
+      <div className="flex">
+        {/* <p className="rounded shadow-2xl">{isLOggedIn?.name[0]}</p>  */}
+        <p className="flex-col">
+          <span className="font-semiBold textxl">
+          {isLOggedIn?.name}
+          </span>
+          <span className="font-semiBold textxl">
+          {isLOggedIn?.email}
+          </span>  
+        </p>
+        <button>
+          <LogOut />
+        </button>
+      </div>
+      {/* <h1 className="text-bankGradient">{isLOggedIn?.name}</h1> */}
     </section>
   );
 };

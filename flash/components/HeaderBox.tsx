@@ -1,6 +1,7 @@
+import { getLoggedInUser } from '@/lib/Actions/user.actions';
 import React from 'react'
 
-const HeaderBox = ({type,title,user,subtext}:HeaderBoxProps) => {
+const HeaderBox = async ({type,title,user,subtext}:HeaderBoxProps) => {
   return (
     <div className='header-box'>
         <h1 className="header-box-title">
